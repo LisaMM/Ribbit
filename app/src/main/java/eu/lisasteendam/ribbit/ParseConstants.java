@@ -1,8 +1,5 @@
 package eu.lisasteendam.ribbit;
 
-/**
- * Created by Admin on 14/10/2014.
- */
 public final class ParseConstants {
 
     // Class names
