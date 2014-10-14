@@ -13,14 +13,15 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="email_hint">Email</string>
     <string name="sign_up_button_label">Sign Up</string>
-    <string name="signup_error_message">
-        Please make sure you enter a username, password and email address</string>
+    <string name="signup_error_message">        Please make sure you enter a username, password and email address</string>
     <string name="signup_error_title">Oops!</string>
-    <string name="login_error_message">
-        Please make sure you enter a username and password</string>
+    <string name="login_error_message">        Please make sure you enter a username and password</string>
     <string name="login_error_title">Oops!</string>
     <string name="menu_logout_label">Logout</string>
     <string name="empty_inbox_label">No new messages</string>
     <string name="empty_friends_label">Add friends to begin</string>
+    <string name="menu_edit_friends_label">Edit Friends</string>
+    <string name="title_activity_edit_friends">Edit Friends</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

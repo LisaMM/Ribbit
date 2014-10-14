@@ -29,8 +29,17 @@
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".LoginActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".EditFriendsActivity"
+            android:label="@string/title_activity_edit_friends"
             android:screenOrientation="portrait"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.lisasteendam.ribbit.MainActivity" />
         </activity>
     </application>
 
