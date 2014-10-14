@@ -31,6 +31,7 @@
     <string name="error_external_storage">
         There was a problem accessing your device\'s external storage
     </string>
+    <string name="general_error">Sorry, there was an error!</string>
 
     <string-array name="camera_choices">
         <item>Take Picture</item>
