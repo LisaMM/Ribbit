@@ -52,8 +52,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                             if (mMediaUri == null) {
                                 // Display an error
                                 Toast.makeText(
-                                    MainActivity.this,
-                                    R.string.error_external_storage,
+                                    MainActivity.this, R.string.error_external_storage,
                                     Toast.LENGTH_LONG).show();
                             } else {
                                 takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
@@ -61,6 +60,19 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                             }
                             break;
                         case 1: // Take video
+                            Intent videoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                            mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+                            if (mMediaUri == null) {
+                                // Display an error
+                                Toast.makeText(
+                                        MainActivity.this, R.string.error_external_storage,
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                videoIntent.putExtra(MediaStore.EXTRA_OUTPUT, mMediaUri);
+                                videoIntent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 10);
+                                videoIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0); // 0 = lowest resolution
+                                startActivityForResult(videoIntent, TAKE_VIDEO_REQUEST);
+                            }
                             break;
                         case 2: // Choose picture
                             break;
