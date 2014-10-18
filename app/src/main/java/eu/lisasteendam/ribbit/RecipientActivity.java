@@ -98,7 +98,7 @@ public class RecipientActivity extends ListActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_send) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -108,5 +108,10 @@ public class RecipientActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
+        if (l.getCheckedItemCount() > 0) {
+            mSendMenuItem.setVisible(true);
+        } else {
+            mSendMenuItem.setVisible(false);
+        }
     }
 }
