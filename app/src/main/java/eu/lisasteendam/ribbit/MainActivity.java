@@ -246,10 +246,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                         return;
                     } finally {
                         try {
-                            inputStream.close();
+                            if (inputStream != null) {
+                                inputStream.close();
+                            }
                         } catch (IOException e) {
-                            // Intentionally blank
-                        } catch (NullPointerException ne) {
                             // Intentionally blank
                         }
                     }
@@ -265,6 +265,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 mediaScanIntent.setData(mMediaUri);
                 sendBroadcast(mediaScanIntent);
             }
+
+            Intent recipientsIntent = new Intent(this, RecipientActivity.class);
+            recipientsIntent.setData(mMediaUri);
+            startActivity(recipientsIntent);
         } else if (resultCode != RESULT_CANCELED) {
             Toast.makeText(this, R.string.general_error, Toast.LENGTH_LONG).show();
         }
