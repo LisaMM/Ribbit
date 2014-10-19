@@ -13,10 +13,12 @@ import android.widget.ListView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -99,9 +101,14 @@ public class RecipientActivity extends ListActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_send) {
+            ParseObject message = createMessage();
+            send(message);
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void send(ParseObject message) {
     }
 
     @Override
@@ -113,5 +120,24 @@ public class RecipientActivity extends ListActivity {
         } else {
             mSendMenuItem.setVisible(false);
         }
+    }
+
+    protected ParseObject createMessage() {
+        ParseObject message = new ParseObject(ParseConstants.CLASS_MESSAGES);
+        message.put(ParseConstants.KEY_SENDER_ID, ParseUser.getCurrentUser().getObjectId());
+        message.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
+        message.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
+
+        return message;
+    }
+
+    protected ArrayList<String> getRecipientIds() {
+        ArrayList<String> recipientIds = new ArrayList<String>();
+        for (int i = 0; i < getListView().getCount(); i++) {
+            if (getListView().isItemChecked(i)) {
+                recipientIds.add(mFriends.get(i).getObjectId());
+            }
+        }
+        return recipientIds;
     }
 }
