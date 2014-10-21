@@ -2,6 +2,7 @@ package eu.lisasteendam.ribbit;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
@@ -29,6 +31,8 @@ public class RecipientActivity extends ListActivity {
     protected List<ParseUser> mFriends;
     protected ParseRelation<ParseUser> mFriendsRelation;
     protected ParseUser mCurrentUser;
+    protected Uri mMediaUri;
+    protected String mFileType;
 
     protected MenuItem mSendMenuItem;
 
@@ -39,6 +43,9 @@ public class RecipientActivity extends ListActivity {
         setContentView(R.layout.activity_recipient);
 
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        mMediaUri = getIntent().getData();
+        mFileType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
     }
 
     @Override
@@ -127,8 +134,22 @@ public class RecipientActivity extends ListActivity {
         message.put(ParseConstants.KEY_SENDER_ID, ParseUser.getCurrentUser().getObjectId());
         message.put(ParseConstants.KEY_SENDER_NAME, ParseUser.getCurrentUser().getUsername());
         message.put(ParseConstants.KEY_RECIPIENT_IDS, getRecipientIds());
+        message.put(ParseConstants.KEY_FILE_TYPE, mFileType);
 
-        return message;
+        byte[] fileBytes = FileHelper.getByteArrayFromFile(this, mMediaUri);
+
+        if (fileBytes == null) {
+            return null;
+        } else {
+            if (mFileType.equals(ParseConstants.TYPE_IMAGE)) {
+                fileBytes = FileHelper.reduceImageForUpload(fileBytes);
+            }
+            String fileName = FileHelper.getFileName(this, mMediaUri, mFileType);
+            ParseFile file = new ParseFile(fileName, fileBytes);
+            message.put(ParseConstants.KEY_FILE, file);
+
+            return message;
+        }
     }
 
     protected ArrayList<String> getRecipientIds() {
