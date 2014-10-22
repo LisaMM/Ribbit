@@ -12,9 +12,9 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="email_hint">Email</string>
     <string name="sign_up_button_label">Sign Up</string>
-    <string name="signup_error_message">        Please make sure you enter a username, password and email address</string>
+    <string name="signup_error_message">Please make sure you enter a username, password and email address</string>
     <string name="signup_error_title">Oops!</string>
-    <string name="login_error_message">        Please make sure you enter a username and password</string>
+    <string name="login_error_message">Please make sure you enter a username and password</string>
     <string name="login_error_title">Oops!</string>
     <string name="menu_logout_label">Logout</string>
     <string name="empty_inbox_label">No new messages</string>
@@ -47,5 +47,6 @@
     <string name="error_sending_file">
         There was an error sending your message. Please try again.
     </string>
+    <string name="content_description_message_icon">picture icon</string>
 
 </resources>
