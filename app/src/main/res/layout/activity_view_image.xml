@@ -12,5 +12,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:scaleType="fitCenter"
+        android:contentDescription="@string/content_description_view_image"
         />
 </RelativeLayout>

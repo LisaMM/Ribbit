@@ -39,13 +39,13 @@
     <string name="title_activity_recipient">Choose Recipients</string>
     <string name="empty_recipients_list_message">Choose some friends first.</string>
     <string name="menu_send_label">Send</string>
-    <string name="error_selecting_file">        There was an error with the file selected. Please select another file.</string>
+    <string name="error_selecting_file">There was an error with the file selected. Please select another file.</string>
     <string name="error_selecting_file_title">We\'re sorry!</string>
     <string name="success_message">Message sent!</string>
-    <string name="error_sending_file">        There was an error sending your message. Please try again.</string>
+    <string name="error_sending_file">There was an error sending your message. Please try again.</string>
     <string name="content_description_message_icon">picture icon</string>
     <string name="title_activity_view_image">ViewImageActivityRibbit</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="content_description_view_image">the image from the message</string>
 
 </resources>
